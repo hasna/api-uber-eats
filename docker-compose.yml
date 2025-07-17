@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-uber-eats
+    ports:
+      - "8065:8000"
+    environment:
+      - DATABASE_URL=postgresql://uber_eats_user:uber_eats_pass@postgres:5432/uber_eats_db
+      - REDIS_URL=redis://redis:6379/0
+      - API_BASE_URL=http://localhost:8065
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=development
+      - UBER_EATS_CLIENT_ID=${UBER_EATS_CLIENT_ID}
+      - UBER_EATS_CLIENT_SECRET=${UBER_EATS_CLIENT_SECRET}
+      - UBER_EATS_WEBHOOK_SECRET=${UBER_EATS_WEBHOOK_SECRET}
+    volumes:
+      - ./app:/app/app
+      - ./tests:/app/tests
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - uber-eats-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: uber-eats-postgres
+    environment:
+      - POSTGRES_USER=uber_eats_user
+      - POSTGRES_PASSWORD=uber_eats_pass
+      - POSTGRES_DB=uber_eats_db
+    ports:
+      - "5465:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./app/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - uber-eats-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: uber-eats-redis
+    ports:
+      - "6395:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - uber-eats-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  uber-eats-network:
+    driver: bridge
