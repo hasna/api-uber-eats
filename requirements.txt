@@ -63,3 +63,4 @@ aioredis==2.0.1
 # Background tasks
 celery==5.3.6
 flower==2.0.1
+mcp==0.1.0
