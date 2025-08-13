@@ -1,0 +1,50 @@
+[
+  {
+    "id": "Authentication",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Restaurant Management",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Order Processing",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Delivery Tracking",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Menu Builder",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Webhook Handler",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Testing Suite",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "Documentation",
+    "content": "\u2705 completed",
+    "status": "pending",
+    "priority": "medium"
+  }
+]
