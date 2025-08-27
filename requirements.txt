@@ -64,3 +64,6 @@ aioredis==2.0.1
 celery==5.3.6
 flower==2.0.1
 mcp==0.1.0
+
+# JSON Logging
+python-json-logger==2.0.7

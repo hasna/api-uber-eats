@@ -138,6 +138,23 @@ from app.schemas.reports import (
     FinancialSummary,
     ReportList,
 )
+from app.schemas.user import (
+    UserStatus,
+    UserType,
+    DietaryRestriction,
+    Address as UserAddress,
+    UserPreferences,
+    UserBase,
+    UserCreate,
+    UserUpdate,
+    User,
+    UserProfile,
+    UserList,
+    UserAnalytics,
+    UserNotification,
+    UserSegment,
+    UserLoyalty,
+)
 
 __all__ = [
     # Base schemas
@@ -269,4 +286,20 @@ __all__ = [
     "DeliveryPerformance",
     "FinancialSummary",
     "ReportList",
+    # User schemas
+    "UserStatus",
+    "UserType",
+    "DietaryRestriction",
+    "UserAddress",
+    "UserPreferences",
+    "UserBase",
+    "UserCreate",
+    "UserUpdate",
+    "User",
+    "UserProfile",
+    "UserList",
+    "UserAnalytics",
+    "UserNotification",
+    "UserSegment",
+    "UserLoyalty",
 ]

@@ -2,7 +2,25 @@
 
 ## Overview
 
-This API provides comprehensive integration with the Uber Eats marketplace platform. It enables restaurant partners to manage their stores, menus, orders, and delivery operations through a unified RESTful interface.
+This comprehensive API provides full integration with Uber Eats for restaurant partners, including:
+
+- **Store Management** - Complete store configuration and status management
+- **Menu Management** - Full CRUD operations for menus, categories, items, and modifiers  
+- **Order Management** - Real-time order processing and lifecycle management
+- **Delivery Tracking** - Real-time delivery status and partner coordination
+- **User Management** - Customer data management and analytics
+- **Webhook Handling** - Real-time event processing and notifications
+- **Reporting & Analytics** - Comprehensive business intelligence and insights
+
+## Architecture
+
+The API is built using:
+- **FastAPI** - High-performance Python web framework
+- **PostgreSQL** - Primary database for persistent data
+- **Redis** - Caching and rate limiting
+- **Docker** - Containerized deployment
+- **Prometheus** - Metrics and monitoring
+- **Structured Logging** - Request tracing and debugging
 
 ## Base URL
 

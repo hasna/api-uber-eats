@@ -2,7 +2,7 @@
 Webhook-related schemas for Uber Eats API
 """
 from datetime import datetime
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, ConfigDict
 from enum import Enum
 

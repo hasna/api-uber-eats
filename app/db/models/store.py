@@ -4,6 +4,7 @@ Store model for Uber Eats stores
 from sqlalchemy import Column, String, Boolean, DateTime, Float, Integer, JSON, Enum
 from sqlalchemy.sql import func
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 import uuid
 import enum
 
@@ -69,3 +70,7 @@ class Store(Base):
     is_active = Column(Boolean, default=True, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    
+    # Relationships
+    orders = relationship("Order", back_populates="store")
+    menus = relationship("Menu", back_populates="store")

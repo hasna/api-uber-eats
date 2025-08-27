@@ -8,6 +8,7 @@ from app.services.uber_eats.order import UberEatsOrderService
 from app.services.uber_eats.webhook import UberEatsWebhookService
 from app.services.uber_eats.delivery import UberEatsDeliveryService
 from app.services.uber_eats.report import UberEatsReportService
+from app.services.uber_eats.user import UberEatsUserService
 
 __all__ = [
     "UberEatsAuthService",
@@ -17,4 +18,5 @@ __all__ = [
     "UberEatsWebhookService",
     "UberEatsDeliveryService",
     "UberEatsReportService",
+    "UberEatsUserService",
 ]

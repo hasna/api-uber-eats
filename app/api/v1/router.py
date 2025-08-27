@@ -12,6 +12,7 @@ from app.api.v1.endpoints.uber_eats import (
     oauth,
     reports,
     delivery,
+    users,
 )
 
 api_router = APIRouter()
@@ -28,3 +29,4 @@ api_router.include_router(orders.router, prefix="/uber-eats/orders", tags=["Uber
 api_router.include_router(webhooks.router, prefix="/uber-eats/webhooks", tags=["Uber Eats Webhooks"])
 api_router.include_router(reports.router, prefix="/uber-eats/reports", tags=["Uber Eats Reports"])
 api_router.include_router(delivery.router, prefix="/uber-eats/delivery", tags=["Uber Eats Delivery"])
+api_router.include_router(users.router, prefix="/uber-eats/users", tags=["Uber Eats Users"])

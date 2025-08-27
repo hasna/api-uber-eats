@@ -4,11 +4,12 @@ Uber Eats API - Main application module
 from contextlib import asynccontextmanager
 from typing import Any, Dict
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from prometheus_client import make_asgi_app
 from starlette.middleware.base import BaseHTTPMiddleware
+from pydantic import ValidationError
 
 from app.api.v1.router import api_router
 from app.core.config import settings
@@ -17,6 +18,13 @@ from app.db.base import Base
 from app.middleware.logging import LoggingMiddleware
 from app.middleware.rate_limiter import RateLimitMiddleware
 from app.middleware.metrics import MetricsMiddleware
+from app.api.v1.endpoints.app.errors import (
+    UberEatsAPIException,
+    uber_eats_api_exception_handler,
+    http_exception_handler,
+    validation_exception_handler,
+    general_exception_handler,
+)
 
 
 @asynccontextmanager
@@ -75,6 +83,12 @@ def create_application() -> FastAPI:
     app.add_middleware(LoggingMiddleware)
     app.add_middleware(RateLimitMiddleware)
     app.add_middleware(MetricsMiddleware)
+    
+    # Add exception handlers
+    app.add_exception_handler(UberEatsAPIException, uber_eats_api_exception_handler)
+    app.add_exception_handler(HTTPException, http_exception_handler)
+    app.add_exception_handler(ValidationError, validation_exception_handler)
+    app.add_exception_handler(Exception, general_exception_handler)
     
     # Include API router
     app.include_router(api_router, prefix=settings.API_V1_STR)
